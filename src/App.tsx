@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+import ShoppingCart from "./components/ShoppingCart";
 import "./App.css";
 
 export type shopCart = {
@@ -37,8 +39,8 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <div className="App">
-            <h1>tweet hello `world`</h1>
+        <div>
+            <ShoppingCart data={data} setData={setData} loading={loading} />
         </div>
     );
 };

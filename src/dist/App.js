@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var react_1 = require("react");
+var ShoppingCart_1 = require("./components/ShoppingCart");
 require("./App.css");
 var App = function () {
     var _a = react_1.useState([]), data = _a[0], setData = _a[1];
@@ -74,7 +75,7 @@ var App = function () {
     react_1.useEffect(function () {
         fetchData();
     }, []);
-    return (react_1["default"].createElement("div", { className: "App" },
-        react_1["default"].createElement("h1", null, "tweet hello `world`")));
+    return (react_1["default"].createElement("div", null,
+        react_1["default"].createElement(ShoppingCart_1["default"], { data: data, setData: setData, loading: loading })));
 };
 exports["default"] = App;
