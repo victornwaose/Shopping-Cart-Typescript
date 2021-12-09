@@ -38,13 +38,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var react_1 = require("react");
 var ShoppingCart_1 = require("./components/ShoppingCart");
+var Header_1 = require("./components/header/Header");
 require("./App.css");
 var App = function () {
-    var _a = react_1.useState([]), data = _a[0], setData = _a[1];
+    var _a = react_1.useState([]), datas = _a[0], setDatas = _a[1];
     var _b = react_1.useState(false), loading = _b[0], setLoading = _b[1];
     var url = "https://fakestoreapi.com/products";
     var fetchData = function () { return __awaiter(void 0, void 0, Promise, function () {
-        var response, data_1, error_1;
+        var response, data, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -58,10 +59,10 @@ var App = function () {
                     if (!response.ok) return [3 /*break*/, 4];
                     return [4 /*yield*/, response.json()];
                 case 3:
-                    data_1 = _a.sent();
-                    setData(data_1);
+                    data = _a.sent();
+                    setDatas(data);
                     setLoading(false);
-                    console.log(data_1);
+                    console.log(datas);
                     _a.label = 4;
                 case 4: return [3 /*break*/, 6];
                 case 5:
@@ -76,6 +77,7 @@ var App = function () {
         fetchData();
     }, []);
     return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement(ShoppingCart_1["default"], { data: data, setData: setData, loading: loading })));
+        react_1["default"].createElement(Header_1["default"], null),
+        react_1["default"].createElement(ShoppingCart_1["default"], { datas: datas, setDatas: setDatas, loading: loading })));
 };
 exports["default"] = App;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Container } from "@mui/material";
 
 import ShoppingCart from "./components/ShoppingCart";
+import Header from "./components/header/Header";
 import "./App.css";
 
 export type shopCart = {
@@ -14,7 +16,7 @@ export type shopCart = {
 };
 
 const App: React.FC = () => {
-    const [data, setData] = useState<any>([]);
+    const [datas, setDatas] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const url = "https://fakestoreapi.com/products";
@@ -25,9 +27,9 @@ const App: React.FC = () => {
         try {
             if (response.ok) {
                 const data = await response.json();
-                setData(data);
+                setDatas(data);
                 setLoading(false);
-                console.log(data);
+                console.log(datas);
             }
         } catch (error) {
             console.log(error);
@@ -40,7 +42,8 @@ const App: React.FC = () => {
 
     return (
         <div>
-            <ShoppingCart data={data} setData={setData} loading={loading} />
+            <Header />
+            <ShoppingCart datas={datas} setDatas={setDatas} loading={loading} />
         </div>
     );
 };
