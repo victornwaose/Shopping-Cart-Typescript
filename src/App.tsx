@@ -17,6 +17,7 @@ export type shopCart = {
 
 const App: React.FC = () => {
     const [datas, setDatas] = useState<any>([]);
+    const [newdata, setNewData] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const url = "https://fakestoreapi.com/products";
@@ -28,6 +29,7 @@ const App: React.FC = () => {
             if (response.ok) {
                 const data = await response.json();
                 setDatas(data);
+                setNewData(data);
                 setLoading(false);
                 console.log(datas);
             }
@@ -39,6 +41,8 @@ const App: React.FC = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
+    const
 
     return (
         <div>
