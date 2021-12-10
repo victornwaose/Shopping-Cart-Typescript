@@ -43,7 +43,8 @@ require("./App.css");
 var App = function () {
     var _a = react_1.useState([]), datas = _a[0], setDatas = _a[1];
     var _b = react_1.useState([]), newdata = _b[0], setNewData = _b[1];
-    var _c = react_1.useState(false), loading = _c[0], setLoading = _c[1];
+    var _c = react_1.useState(""), searchItem = _c[0], setSearchItem = _c[1];
+    var _d = react_1.useState(false), loading = _d[0], setLoading = _d[1];
     var url = "https://fakestoreapi.com/products";
     var fetchData = function () { return __awaiter(void 0, void 0, Promise, function () {
         var response, data, error_1;
@@ -64,7 +65,6 @@ var App = function () {
                     setDatas(data);
                     setNewData(data);
                     setLoading(false);
-                    console.log(datas);
                     _a.label = 4;
                 case 4: return [3 /*break*/, 6];
                 case 5:
@@ -78,9 +78,14 @@ var App = function () {
     react_1.useEffect(function () {
         fetchData();
     }, []);
-    var ;
+    var search = function (e) {
+        e.preventDefault();
+        var newValue = e.currentTarget.value;
+        setSearchItem(newValue);
+        console.log(setSearchItem, "is working");
+    };
     return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement(Header_1["default"], null),
+        react_1["default"].createElement(Header_1["default"], { search: search, setSearchItem: setSearchItem }),
         react_1["default"].createElement(ShoppingCart_1["default"], { datas: datas, setDatas: setDatas, loading: loading })));
 };
 exports["default"] = App;

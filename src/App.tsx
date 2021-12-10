@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "@mui/material";
 
 import ShoppingCart from "./components/ShoppingCart";
 import Header from "./components/header/Header";
@@ -18,6 +17,7 @@ export type shopCart = {
 const App: React.FC = () => {
     const [datas, setDatas] = useState<any>([]);
     const [newdata, setNewData] = useState<any>([]);
+    const [searchItem, setSearchItem] = useState<String>("");
     const [loading, setLoading] = useState<boolean>(false);
 
     const url = "https://fakestoreapi.com/products";
@@ -31,7 +31,6 @@ const App: React.FC = () => {
                 setDatas(data);
                 setNewData(data);
                 setLoading(false);
-                console.log(datas);
             }
         } catch (error) {
             console.log(error);
@@ -42,11 +41,16 @@ const App: React.FC = () => {
         fetchData();
     }, []);
 
-    const
+    const search = (e: React.FormEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const newValue = e.currentTarget.value;
+        setSearchItem(newValue);
+        console.log(setSearchItem, "is working")
+    };
 
     return (
         <div>
-            <Header />
+            <Header search={search} setSearchItem={setSearchItem} />
             <ShoppingCart datas={datas} setDatas={setDatas} loading={loading} />
         </div>
     );

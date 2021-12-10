@@ -1,5 +1,5 @@
 import React from "react";
-import { CircularProgress, Box } from "@mui/material";
+import { CircularProgress, Box, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import Cards from "./card/Cards";
@@ -15,16 +15,14 @@ const useStyle = makeStyles((theme) => ({
         width: "80%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "60px",
-    },
-    card: {
+        marginTop: "60px", 
         display: "flex",
         justifyContent: "space-between",
     },
+ 
 }));
 
 const ShoppingCart: React.FC<Props> = ({ datas, setDatas, loading }) => {
- 
     const classes = useStyle();
 
     return (
@@ -35,17 +33,19 @@ const ShoppingCart: React.FC<Props> = ({ datas, setDatas, loading }) => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        marginTop: "40%",
+                        marginTop: "50%",
                     }}
                 >
                     <CircularProgress />
                 </Box>
             ) : (
-                datas.map((data: any) => (
-                    <div className={classes.card}>
-                        <Cards key={data.id} data={data} />
-                    </div>
-                ))
+                <Grid container spacing={{ xs: 2, md: 3 }} style={{marginTop: "40px", marginBottom: "20px"}} >
+                    {datas.map((data: any) => (
+                        <Grid  xs={12} sm={4} style={{marginTop: "20px", marginBottom: "20px"}}>
+                            <Cards  data={data} />
+                        </Grid>
+                    ))}
+                </Grid>
             )}
         </div>
     );

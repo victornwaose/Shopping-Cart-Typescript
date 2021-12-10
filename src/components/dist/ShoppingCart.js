@@ -9,9 +9,7 @@ var useStyle = styles_1.makeStyles(function (theme) { return ({
         width: "80%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "60px"
-    },
-    card: {
+        marginTop: "60px",
         display: "flex",
         justifyContent: "space-between"
     }
@@ -23,9 +21,9 @@ var ShoppingCart = function (_a) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "40%"
+            marginTop: "50%"
         } },
-        react_1["default"].createElement(material_1.CircularProgress, null))) : (datas.map(function (data) { return (react_1["default"].createElement("div", { className: classes.card },
-        react_1["default"].createElement(Cards_1["default"], { key: data.id, data: data }))); }))));
+        react_1["default"].createElement(material_1.CircularProgress, null))) : (react_1["default"].createElement(material_1.Grid, { container: true, spacing: { xs: 2, md: 3 }, style: { marginTop: "40px", marginBottom: "20px" } }, datas.map(function (data) { return (react_1["default"].createElement(material_1.Grid, { xs: 12, sm: 4, style: { marginTop: "20px", marginBottom: "20px" } },
+        react_1["default"].createElement(Cards_1["default"], { data: data }))); })))));
 };
 exports["default"] = ShoppingCart;
