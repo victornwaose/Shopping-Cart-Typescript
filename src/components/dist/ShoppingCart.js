@@ -21,7 +21,7 @@ var ShoppingCart = function (_a) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "50%"
+            margin: "auto"
         } },
         react_1["default"].createElement(material_1.CircularProgress, null))) : (react_1["default"].createElement(material_1.Grid, { container: true, spacing: { xs: 2, md: 3 }, style: { marginTop: "40px", marginBottom: "20px" } }, datas.map(function (data) { return (react_1["default"].createElement(material_1.Grid, { xs: 12, sm: 4, style: { marginTop: "20px", marginBottom: "20px" } },
         react_1["default"].createElement(Cards_1["default"], { data: data }))); })))));

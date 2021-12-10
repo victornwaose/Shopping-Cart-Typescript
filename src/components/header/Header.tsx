@@ -1,9 +1,7 @@
-import React from "react";
-import { Toolbar, Typography, AppBar, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Toolbar, Typography, AppBar, TextField, Drawer, Badge } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { FaShoppingCart } from "react-icons/fa";
-
-
 
 const useStyle = makeStyles(() => ({
     header: {
@@ -14,7 +12,6 @@ const useStyle = makeStyles(() => ({
         marginRight: "auto",
         cursor: "pointer",
     },
-
 }));
 
 interface Props {
@@ -24,18 +21,29 @@ interface Props {
 
 const Header: React.FC<Props> = ({ search, setSearchItem }) => {
     const classes = useStyle();
+    const [cartOpen, setCartOpen] = useState<boolean>(false);
 
     return (
         <div>
             <AppBar>
                 <Toolbar className={classes.header}>
                     <Typography variant="h6">shopCart</Typography>
-                    <TextField
-                        label="search for products"
-                        variant="outlined"
-                        // onChange={(e) => search(newValue)}
-                    />
-                    <FaShoppingCart style={{width:"80px", height: "30px"}} />
+                    <TextField label="search for products" variant="outlined" />
+
+                    <Drawer
+                        anchor="right"
+                        open={cartOpen}
+                        onClose={() => setCartOpen(false)}
+                    >
+                       
+                        Cart
+                    </Drawer> 
+                    <Badge badgeContent={5} color="error" >
+                            <FaShoppingCart
+                                style={{ width: "50px", height: "30px"}}
+                                onClick={() => setCartOpen(true)}
+                            />
+                    </Badge>
                 </Toolbar>
             </AppBar>
         </div>

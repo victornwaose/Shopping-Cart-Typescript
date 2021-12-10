@@ -33,7 +33,7 @@ const ShoppingCart: React.FC<Props> = ({ datas, setDatas, loading }) => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        marginTop: "50%",
+                        margin: "auto",
                     }}
                 >
                     <CircularProgress />
